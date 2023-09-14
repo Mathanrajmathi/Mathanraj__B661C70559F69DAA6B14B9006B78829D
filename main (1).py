@@ -1,29 +1,34 @@
-# Python example to show that base
-# class members can be accessed in
-# derived class using super()
-class Base(object):
-  
-    # Constructor
-    def __init__(self, x):
-        self.x = x    
-  
-class Derived(Base):
-  
-    # Constructor
-    def __init__(self, x, y):
-          
-        ''' In Python 3.x, "super().__init__(name)"
-            also works''' 
-        super(Derived, self).__init__(x)
-        self.y = y
-  
-    def printXY(self):
-  
-       # Note that Base.x won't work here
-       # because super() is used in constructor
-       print(self.x, self.y)
-  
-  
-# Driver Code
-d = Derived(10, 20)
-d.printXY()
+# Python3 program to calculate the CGPA
+# and CGPA percentage of a student
+def CgpaCalc(marks, n):
+ 
+    # Variable to store the grades in
+    # every subject
+    grade = [0] * n
+   
+    # Variables to store CGPA and the
+    # sum of all the grades
+    Sum = 0
+   
+    # Computing the grades
+    for i in range(n):
+       grade[i] = (marks[i] / 10)
+   
+    # Computing the sum of grades
+    for i in range(n):
+       Sum += grade[i]
+   
+    # Computing the CGPA
+    cgpa = Sum / n
+   
+    return cgpa
+   
+# Driver code
+n = 5
+marks = [ 90, 80, 70, 80, 90 ]
+ 
+cgpa = CgpaCalc(marks, n)
+       
+print("CGPA = ", '%.1f' % cgpa)
+print("CGPA Percentage = ", '%.2f' % (cgpa * 9.5))
+ 
